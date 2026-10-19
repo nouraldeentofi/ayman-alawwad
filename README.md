@@ -1,7 +1,7 @@
 # موقع أيمن العواد — Ayman Alawwad (النسخة التنفيذية)
 
 موقع Executive Personal Branding بالإنجليزي، مبني من معلومات لينكدإن المنشورة.
-الحالة: **معاينة خاصة** — الصفحات كلها `noindex`، والمعاينة على Cloudflare Pages محمية بكلمة سر.
+الحالة: **معاينة** على GitHub Pages (https://nouraldeentofi.github.io/ayman-alawwad/) والصفحات كلها `noindex`. وفي بوابة كلمة سر جاهزة لـ Cloudflare Pages لما نحتاجها (`CF_GATE = True`).
 
 ## الفكرة
 "Drafted on linen": لون الكتان والحبر من بانر لينكدإن تبعه، وخلفية حية عبارة عن خارطة طريق محفظة مشاريع بتنرسم لحالها بالحبر، والمعالم (milestones) على شكل ◆. الأحمر الغامق من الشماغ. الخطوط Newsreader و Public Sans، ومستضافة جوا الموقع.
@@ -20,9 +20,10 @@
 - **كل النصوص:** `content.py`. كل رقم وجملة مصدره بـ `brief.md`.
 - **نقاط لازم يأكدها أيمن قبل الإطلاق:** قائمة `REVIEW` آخر `content.py`.
 - **CONFIG** أول `content.py`:
-  - `PHOTO` — صورته (فاضي = بطاقة AA بدلها). `EMAIL` فاضي لحد ما يوافق يبين، و`PHONE` فاضي.
+  - `PHOTO` — صورته (فاضي = بطاقة AA بدلها، وهيك هي بنسخة GitHub). `EMAIL` فاضي لحد ما يوافق يبين، و`PHONE` فاضي.
   - `BASE_URL` — الدومين النهائي (canonical و sitemap و og:image).
-  - `PREVIEW` — `True` بالمعاينة: noindex + بوابة كلمة السر. عند الإطلاق `False`.
+  - `PREVIEW` — `True` بالمعاينة (noindex). عند الإطلاق `False`.
+  - `CF_GATE` — `True` بيضيف بوابة كلمة السر لما ترفع على Cloudflare Pages.
 - **الألوان والخطوط والمسافات:** أول `assets/style.css`. **الحركة والسلوك:** `assets/site.js`.
 
 ```
@@ -30,7 +31,7 @@ python3 build.py        # بيطلع الموقع جاهز بمجلد docs/
 ```
 
 ## المعاينة المحمية (Cloudflare Pages)
-`cloudflare/_worker.js` بيتنسخ لـ `docs/_worker.js` لما `PREVIEW = True`. هو صفحة كلمة سر بنفس شكل الموقع، وبعد كلمة السر الصحيحة بيضل الزائر داخل 30 يوم. إذا ما في كلمة سر محطوطة، الموقع بيضل مسكّر.
+`cloudflare/_worker.js` بيتنسخ لـ `docs/_worker.js` لما `CF_GATE = True`. هو صفحة كلمة سر بنفس شكل الموقع، وبعد كلمة السر الصحيحة بيضل الزائر داخل 30 يوم. إذا ما في كلمة سر محطوطة، الموقع بيضل مسكّر.
 
 1. Cloudflare → Workers & Pages → Create → Pages → Upload assets → اسم المشروع مثلاً `ayman-alawwad-preview` → ارفع مجلد `docs` → Deploy.
 2. Settings → Variables and Secrets → Add → الاسم `PREVIEW_PASSWORD`، النوع Secret، والقيمة كلمة السر اللي بدك تعطيها لأيمن.
