@@ -1,6 +1,8 @@
-"""All site content for Ayman Alawwad's site (English only).
+"""All site content for Ayman Alawwad's site (English only) — executive edition.
 
-Every fact here traces back to brief.md (LinkedIn, collected 2026-10-19).
+Every fact here traces back to brief.md (LinkedIn profile and posts, collected 2026-10-19).
+Wording that interprets his own words (principles, bio) is marked DRAFT in REVIEW below
+so Ayman can confirm it before launch.
 Edit texts here, then run:  python3 build.py
 """
 
@@ -10,35 +12,36 @@ Edit texts here, then run:  python3 build.py
 CONFIG = {
     "NAME": "Ayman Alawwad",
     "NAME_AR": "أيمن العواد",
-    "EMAIL": "",                      # hidden on the public preview — add after Ayman approves
+    "EMAIL": "",                      # hidden until Ayman approves showing it (AymanAlawwad95@gmail.com on LinkedIn)
     "PHONE": "",                      # left empty on purpose — add only with Ayman's OK
     "WHATSAPP": "",
     "LINKEDIN": "https://www.linkedin.com/in/ayman-alawwad-0b9724185/",
     "LOCATION": "Riyadh, Saudi Arabia",
-    "PHOTO": "",                      # public preview shows the AA monogram; set "assets/img/ayman.jpg" to show the portrait
+    "PHOTO": "",                      # public GitHub preview: AA monogram card. Set "assets/img/ayman.jpg" to show his portrait
     "PHOTO_WEBP": "assets/img/ayman.webp",
-    "BASE_URL": "https://nouraldeentofi.github.io/ayman-alawwad",  # change when a custom domain is added
+    "BASE_URL": "https://nouraldeentofi.github.io/ayman-alawwad",  # change to the final domain at launch
     "MAKER": "https://nouraldeentofi.com",
-    "PREVIEW": True,                  # True = private preview: noindex + robots Disallow. Set False after approval.
+    "PREVIEW": True,                  # True = preview: noindex + robots Disallow. Set False after approval.
+    "CF_GATE": False,                 # True = add the Cloudflare password gate (_worker.js) to the build
 }
 
-HEADLINE = "PMO Manager · Portfolio & Program Management"
-STATEMENT = "Bridging strategy and execution through portfolio governance."
-INTRO = ("Ten-plus years leading projects, programs and portfolios across technology, "
-         "infrastructure, construction and government environments in Saudi Arabia.")
+HEADLINE = "PMO Manager · Portfolio & Program Governance"
+STATEMENT = "Turning strategy into governed delivery leaders can see."
+INTRO = ("More than ten years across technology, infrastructure, construction and government environments "
+         "in Saudi Arabia, from a national-scale technology rollout to building a firm's Center of Excellence.")
 
 FIGURES = [
-    {"pre": "", "num": 10, "suf": "+", "label": "Years in project, program & portfolio management"},
     {"pre": "SAR ", "num": 500, "suf": "M+", "label": "Projects and portfolios managed and delivered"},
-    {"pre": "", "num": 28, "suf": "+", "label": "Suppliers evaluated and approved"},
-    {"pre": "", "num": 17, "suf": "+", "label": "Cross-functional team members led"},
+    {"pre": "", "num": 10, "suf": "+", "label": "Years across portfolio governance and delivery"},
+    {"pre": "Top ", "num": 5, "suf": "%", "label": "Selected 60 of 1,200 for an eight-month leadership program"},
+    {"pre": "", "num": 4, "suf": "", "label": "Executive-education modules from MIT, NUS, ESCP and Kellogg"},
 ]
 
 ABOUT = [
     "I am a PMO and project/program management professional with more than ten years of experience across "
     "portfolio governance, strategic initiatives, technology, infrastructure, construction and government "
     "environments in Saudi Arabia.",
-    "My work combines hands-on project delivery with portfolio-level governance — bridging strategy and "
+    "My work combines hands-on project delivery with portfolio-level governance, bridging strategy and "
     "execution, strengthening accountability, improving executive visibility and supporting effective "
     "decision-making.",
     "I have managed and delivered projects and portfolios exceeding SAR 500M, working with government "
@@ -46,39 +49,50 @@ ABOUT = [
     "environments.",
 ]
 
-# Six capability pillars — description from his About, "in practice" from his experience
+# How I lead — DRAFT principles, each built from his About or his own posts
+PRINCIPLES = [
+    {"title": "Bridge strategy and execution",
+     "text": "I combine hands-on delivery with portfolio-level governance, so the priorities set by leadership reach the teams doing the work.",
+     "proof": "Kept business requirements and technical delivery aligned on national-level systems."},
+    {"title": "Give leaders a clear view",
+     "text": "Executive reporting and governance exist to support decisions. I build the visibility that lets leadership decide with confidence.",
+     "proof": "Executive reporting, RAID management and risk registers with regular reporting."},
+    {"title": "Structure + flexibility = results",
+     "text": "Not every project fits one box. I run Agile, Waterfall or hybrid delivery according to what the work needs.",
+     "proof": "5+ hybrid projects delivered, and Product Owner on 2+ Agile projects."},
+    {"title": "Make accountability shared",
+     "text": "Government stakeholders, executives, teams and suppliers each own part of delivery. Governance makes that ownership clear.",
+     "proof": "Multi-vendor environments managed for performance and compliance; 28+ suppliers evaluated."},
+]
+
+# Mandates — the kinds of work he leads (from About + experience)
 PILLARS = [
-    {"icon": "network", "title": "PMO establishment & governance",
-     "text": "Establishing PMO governance frameworks that make accountability, standards and decisions visible.",
-     "proof": "Launched a Center of Excellence that standardized processes and supported a 3rd-to-1st grade classification upgrade."},
+    {"icon": "network", "title": "Establishing PMO governance",
+     "text": "PMO governance frameworks that make accountability, standards and decisions visible.",
+     "proof": "Launched a Center of Excellence that standardized processes and documentation."},
     {"icon": "layers", "title": "Portfolio & program management",
-     "text": "Managing and delivering projects and portfolios exceeding SAR 500M across multiple sectors.",
-     "proof": "Directed giga-scale infrastructure and technology deployments across 3+ concurrent projects."},
+     "text": "Projects and portfolios exceeding SAR 500M, managed and delivered across sectors.",
+     "proof": "Giga-scale infrastructure and technology deployments for public and private clients."},
     {"icon": "target", "title": "Strategy execution & prioritization",
-     "text": "Strategic alignment and prioritization that keep delivery tied to what the organization set out to achieve.",
-     "proof": "Ensured alignment between business requirements and technical delivery on national-level systems."},
+     "text": "Strategic alignment and prioritization that keep delivery tied to the organization's objectives.",
+     "proof": "Prioritized conflicting deadlines across 3+ concurrent projects."},
     {"icon": "shield", "title": "Risk & RAID management",
-     "text": "Risks, assumptions, issues and dependencies tracked and reported — PMI-RMP® certified.",
+     "text": "Risks, assumptions, issues and dependencies tracked and reported. PMI-RMP® earned in 2022.",
      "proof": "Monitored risks and maintained risk registers with regular reporting."},
     {"icon": "report", "title": "Executive reporting & stakeholders",
-     "text": "Executive reporting and stakeholder management with government entities, executives and multidisciplinary teams.",
+     "text": "Reporting and stakeholder management with government entities, executives and multidisciplinary teams.",
      "proof": "Managed stakeholders across government and private sector entities."},
     {"icon": "check", "title": "Vendor & supply governance",
      "text": "Multi-vendor environments managed for performance and compliance.",
-     "proof": "Evaluated and approved 28+ suppliers; material rejection rates reduced by 40%."},
+     "proof": "Supplier evaluation frameworks; 28+ suppliers evaluated and approved."},
 ]
-
-ENVIRONMENTS = ["Portfolio governance", "Strategic initiatives", "Technology", "Infrastructure",
-                "Construction", "Government"]
-FOCUS = ["Governance", "Business value", "Risk", "Cost", "Schedule", "Stakeholder management",
-         "Operational readiness"]
 
 # P3O-style cascade — every phrase taken from his About
 CASCADE = [
     {"level": "Strategy", "text": "Strategic alignment and prioritization"},
     {"level": "Portfolio", "text": "Portfolio governance and executive reporting"},
     {"level": "Program", "text": "Program management and cross-functional delivery"},
-    {"level": "Project", "text": "Agile, Waterfall and hybrid delivery — risk, cost and schedule under control"},
+    {"level": "Project", "text": "Agile, Waterfall and hybrid delivery, with risk, cost and schedule under control"},
     {"level": "Operations", "text": "Operational readiness and business value"},
 ]
 
@@ -88,145 +102,119 @@ QUOTE = {
     "cite": "Ayman Alawwad, on hybrid delivery",
 }
 
+# In my words — verbatim from his LinkedIn posts
+WORDS = [
+    {"text": "This journey has been far more than a set of courses. It has been a transformative experience that expanded my leadership perspective.",
+     "src": "On graduating from the HiPo leadership program", "when": "Dec 2025"},
+    {"text": "This experience has not only broadened my perspective on leadership, but also reinforced the importance of self-awareness, adaptability, and authenticity in leading with purpose.",
+     "src": "On the MIT leadership-strengths module", "when": "Jul 2025"},
+]
+
 # ---------------------------------------------------------------------------
-# Career (past employers only — no current employer details)
+# Leadership journey — three chapters (past employers only)
 # ---------------------------------------------------------------------------
-CAREER = [
-    {"org": "TAHAKOM", "place": "Riyadh", "years": "2022 – 2026",
-     "summary": "Smart traffic enforcement and technology programs delivered for national-level operations.",
-     "roles": [
-         {"title": "Project Manager", "years": "2024 – 2026", "points": [
-             "Led end-to-end delivery of smart traffic violation detection systems, from concept to operation",
-             "Delivered high-impact national-level systems supporting traffic enforcement operations",
-             "Managed stakeholders across government and private sector entities",
-             "Delivered 5+ hybrid (Agile/Waterfall) projects and acted as Product Owner for 2+ Agile projects",
-             "Led cross-functional teams of 17+ members",
-             "Managed multi-vendor environments, ensuring performance and compliance",
-             "Ensured alignment between business requirements and technical delivery",
-         ]},
-         {"title": "Project Engineer", "years": "2022 – 2024", "points": [
-             "Reduced system rejection and missing rates by 40% through advanced technologies",
-             "Evaluated and approved 28+ suppliers for civil and power materials",
-             "Authored 2+ technical guidelines and 7+ engineering designs",
-             "Led cross-functional collaboration between engineering and project teams",
-             "Conducted testing, diagnostics and validation for new technologies",
-             "Monitored risks and maintained risk registers with regular reporting",
-         ]},
+CHAPTERS = [
+    {"num": "I", "title": "Foundations", "years": "2016 – 2021",
+     "orgs": "Khazaz Engineering Office",
+     "text": [
+         "I started in quality assurance, auditing projects against quality and safety standards, then moved into project management.",
+         "As Assistant Project Manager I launched the firm's Center of Excellence, prepared bids for public infrastructure tenders and contributed to raising the firm's classification from 3rd to 1st grade. By 2020 I was managing projects end to end and reporting performance to senior management.",
+         "In 2018 I also trained with The Royal Commission for Riyadh City on the Al-Ddoho revival project, with an overview of the Riyadh Metro.",
      ],
-     "honour": "Honoured for the accomplishment of 2023 targets"},
-    {"org": "Tatweer Buildings Company", "place": "Riyadh", "years": "2021 – 2022",
-     "summary": "Infrastructure reconstruction for the Ministry of Education.",
      "roles": [
-         {"title": "Project Manager", "years": "2021 – 2022", "points": [
-             "Delivered an infrastructure reconstruction project valued at SAR 28M for the Ministry of Education, on schedule and within budget",
-             "Managed the full project lifecycle — planning, execution, monitoring and closure",
-             "Led stakeholder communication across internal teams, contractors and clients",
-             "Resolved technical and contractual issues to keep delivery on track",
-             "Ensured adherence to quality standards and project timelines",
-         ]},
+         ("Quality Assurance Specialist", "Khazaz Engineering Office", "2016 – 2017"),
+         ("Assistant Project Manager", "Khazaz Engineering Office", "2017 – 2020"),
+         ("Trainee Civil Engineer", "The Royal Commission for Riyadh City", "2018"),
+         ("Project Manager", "Khazaz Engineering Office", "2020 – 2021"),
      ]},
-    {"org": "Khazaz Engineering Office", "place": "Riyadh", "years": "2016 – 2021",
-     "summary": "From quality assurance to project management — and a firm upgraded to 1st grade.",
+    {"num": "II", "title": "Delivery at scale", "years": "2021 – 2022",
+     "orgs": "Tatweer Buildings Company",
+     "text": [
+         "I led the full lifecycle of a SAR 28M infrastructure reconstruction project for the Ministry of Education, coordinating internal teams, contractors and the client, and resolving technical and contractual issues along the way.",
+         "It was delivered two weeks ahead of schedule and within budget, in full compliance with quality and safety standards.",
+     ],
      "roles": [
-         {"title": "Project Manager", "years": "2020 – 2021", "points": [
-             "Managed project planning, bidding and execution aligned with organizational strategy",
-             "Prepared bidding documents and evaluated project opportunities",
-             "Led stakeholder meetings and reported performance to senior management",
-         ]},
-         {"title": "Assistant Project Manager", "years": "2017 – 2020", "points": [
-             "Contributed to raising the company classification from 3rd to 1st grade",
-             "Established a Center of Excellence to standardize processes and improve efficiency",
-             "Prepared BOQs for government project bidding",
-         ]},
-         {"title": "Quality Assurance Specialist", "years": "2016 – 2017", "points": [
-             "Managed QA programs and HSE compliance across projects",
-             "Conducted audits and prepared quality reports",
-         ]},
+         ("Project Manager", "Tatweer Buildings Company", "2021 – 2022"),
      ]},
-    {"org": "The Royal Commission for Riyadh City", "place": "Riyadh", "years": "2018",
-     "summary": "Early exposure to city-scale programs.",
+    {"num": "III", "title": "National programs", "years": "2022 – 2026",
+     "orgs": "TAHAKOM",
+     "text": [
+         "At TAHAKOM I moved from engineering into leading national-level technology programs. As Project Engineer I worked on the standards behind delivery, evaluating suppliers, writing technical guidelines and system designs, and keeping risk registers current.",
+         "As Project Manager I led the end-to-end delivery of smart traffic violation detection systems across multiple Saudi cities, with cross-functional teams of 17+, multi-vendor environments and hybrid delivery.",
+         "I was honoured for the accomplishment of 2023 targets, and in 2025 I was selected among 60 of 1,200 candidates for the company's High Potential leadership program.",
+     ],
      "roles": [
-         {"title": "Trainee Civil Engineer", "years": "Jun – Sep 2018", "points": [
-             "Al-Ddoho project — revival of an old area of Riyadh through different design approaches on infrastructure and substructure",
-             "Overview of the Riyadh Metro project from civil, mechanical and electrical perspectives",
-         ]},
+         ("Project Engineer", "TAHAKOM", "2022 – 2024"),
+         ("Project Manager", "TAHAKOM", "2024 – 2026"),
      ]},
 ]
 
 # ---------------------------------------------------------------------------
-# Selected work — one page each
+# Impact — four flagship engagements, told as mandate / complexity / how / result
 # ---------------------------------------------------------------------------
-WORK = [
-    {"slug": "violation-detection-nationwide-rollout",
-     "title": "Violation Detection System — Nationwide Rollout",
-     "short": "Nationwide violation detection rollout",
+IMPACT = [
+    {"slug": "national-violation-detection-rollout",
+     "title": "Nationwide rollout of smart violation detection systems",
+     "short": "National violation detection rollout",
      "org": "TAHAKOM", "years": "2024 – 2026", "role": "Project Manager",
      "fig": "5+", "fig_label": "hybrid projects delivered",
-     "summary": "Led full-cycle delivery of new violation detection systems across multiple cities in Saudi Arabia — stakeholder alignment, technical execution and delivery from concept to operation.",
-     "outcomes": ["Delivered 5+ hybrid-methodology projects",
-                  "Oversaw government and private sector coordination",
-                  "Ensured timely launch of site operations nationwide"],
-     "tags": ["Program & Portfolio Management", "Hybrid delivery", "Government stakeholders"]},
-    {"slug": "giga-multi-sector-deployments",
-     "title": "Giga Project Management for Multi-Sector Deployments",
-     "short": "Giga-scale multi-sector deployments",
-     "org": "TAHAKOM", "years": "2024 – 2026", "role": "Project Manager",
-     "fig": "3+", "fig_label": "concurrent projects prioritized",
-     "summary": "Directed giga-scale infrastructure and technology deployments for high-profile public and private clients.",
-     "outcomes": ["Coordinated multiple engineering streams and stakeholder groups",
-                  "Prioritized conflicting deadlines across 3+ concurrent projects",
-                  "Implemented solutions on time, ensuring resource and budget optimization"],
-     "tags": ["Program & Portfolio Management", "Saudi Building Code", "Prioritization"]},
-    {"slug": "supplier-evaluation-standardization",
-     "title": "Supplier Evaluation and Standardization Program",
-     "short": "Supplier evaluation & standardization",
+     "card": "End-to-end delivery of national-level traffic enforcement systems across multiple Saudi cities.",
+     "mandate": "Lead the delivery of new smart traffic violation detection systems across multiple cities in Saudi Arabia, from concept to operation.",
+     "complexity": "National-level systems supporting traffic enforcement operations, with government and private-sector stakeholders, multiple engineering streams and a multi-vendor environment. Alongside it, giga-scale infrastructure and technology deployments for high-profile public and private clients, with conflicting deadlines across 3+ concurrent projects.",
+     "how": ["Ran delivery in a hybrid Agile/Waterfall model, acting as Product Owner on 2+ Agile projects",
+             "Led cross-functional teams of 17+ members",
+             "Kept business requirements and technical delivery aligned",
+             "Managed vendors for performance and compliance, and prioritized conflicting deadlines"],
+     "result": ["5+ hybrid projects delivered",
+                "Site operations launched on time nationwide",
+                "Solutions implemented on time, with resource and budget optimization"],
+     "tags": ["Program & portfolio management", "Hybrid delivery", "Government stakeholders", "Multi-vendor governance"]},
+    {"slug": "supplier-and-design-standards",
+     "title": "Raising quality through supplier and design standards",
+     "short": "Supplier and design standards",
      "org": "TAHAKOM", "years": "2022 – 2024", "role": "Project Engineer",
      "fig": "40%", "fig_label": "lower material rejection rates",
-     "summary": "Evaluated and approved more than 28 suppliers for civil and power materials across mega infrastructure and technology projects.",
-     "outcomes": ["Established supplier evaluation frameworks",
-                  "Reduced material rejection rates by 40%",
-                  "Improved procurement cycle time and vendor quality"],
-     "tags": ["Vendor governance", "Quality", "Procurement"]},
-    {"slug": "guidelines-and-designs-technology-projects",
-     "title": "Guideline & Design Creation for Technology Projects",
-     "short": "Technical guidelines & system designs",
-     "org": "TAHAKOM", "years": "2022 – 2024", "role": "Project Engineer",
-     "fig": "2 · 7", "fig_label": "guidelines · system designs",
-     "summary": "Authored two technical guidelines and developed seven system designs for smart traffic enforcement projects.",
-     "outcomes": ["Standardized the design approach across engineering teams",
-                  "Reduced rework and improved quality assurance"],
-     "tags": ["Standards", "Saudi Building Code", "Quality assurance"]},
-    {"slug": "infrastructure-rehabilitation-28m",
-     "title": "Infrastructure Rehabilitation Project — SAR 28M",
-     "short": "SAR 28M infrastructure rehabilitation",
+     "card": "Supplier evaluation frameworks, technical guidelines and system designs for mega infrastructure and technology projects.",
+     "mandate": "Bring consistency to the materials and designs behind mega infrastructure and smart traffic enforcement projects.",
+     "complexity": "Civil and power materials from many suppliers, engineering teams that needed a shared design approach, and government stakeholders to keep informed throughout.",
+     "how": ["Established supplier evaluation frameworks and approved 28+ suppliers for civil and power materials",
+             "Authored two technical guidelines and seven system designs that standardized the design approach",
+             "Tested, diagnosed and validated new technologies",
+             "Maintained risk registers with regular reporting"],
+     "result": ["Material rejection rates reduced by 40%",
+                "Shorter procurement cycle time and better vendor quality",
+                "Less rework and stronger quality assurance"],
+     "tags": ["Vendor governance", "Standards", "Quality assurance", "Risk registers"]},
+    {"slug": "moe-infrastructure-rehabilitation",
+     "title": "SAR 28M infrastructure rehabilitation for the Ministry of Education",
+     "short": "SAR 28M Ministry of Education project",
      "org": "Tatweer Buildings Company", "years": "2021 – 2022", "role": "Project Manager",
-     "fig": "2 weeks", "fig_label": "ahead of schedule",
-     "summary": "Delivered a SAR 28M infrastructure project for the Ministry of Education, covering site reconstruction, MEP systems and handover documentation.",
-     "outcomes": ["Delivered two weeks ahead of schedule, within budget",
-                  "Maintained full compliance with quality and safety standards",
-                  "Facilitated contractor coordination and stakeholder reporting"],
-     "tags": ["Full lifecycle delivery", "Saudi Building Code", "Government client"]},
-    {"slug": "center-of-excellence-strategic-plan",
-     "title": "Center of Excellence & Strategic Plan",
-     "short": "Center of Excellence & strategic plan",
+     "fig": "2 weeks", "fig_label": "ahead of schedule, within budget",
+     "card": "Full-lifecycle delivery of a government infrastructure project, from planning to handover.",
+     "mandate": "Deliver a SAR 28M infrastructure reconstruction project for the Ministry of Education, covering site reconstruction, MEP systems and handover documentation.",
+     "complexity": "A full project lifecycle with contractors, internal teams and a government client, and the technical and contractual issues that reconstruction work brings.",
+     "how": ["Managed the full lifecycle, from planning and execution to monitoring and closure",
+             "Led communication across internal teams, contractors and the client",
+             "Resolved technical and contractual issues to keep delivery moving",
+             "Held the project to quality standards and timelines"],
+     "result": ["Delivered two weeks ahead of schedule and within budget",
+                "Full compliance with quality and safety standards"],
+     "tags": ["Full-lifecycle delivery", "Government client", "Contractor management", "Saudi Building Code"]},
+    {"slug": "center-of-excellence",
+     "title": "A Center of Excellence that helped lift a firm to 1st grade",
+     "short": "Center of Excellence and 1st-grade upgrade",
      "org": "Khazaz Engineering Office", "years": "2017 – 2020", "role": "Assistant Project Manager",
      "fig": "3rd → 1st", "fig_label": "grade classification",
-     "summary": "Launched the firm's internal Center of Excellence to standardize processes, documentation and strategic alignment.",
-     "outcomes": ["Contributed to the firm's upgrade from 3rd to 1st-grade classification",
-                  "Led training, documentation and audit preparation"],
-     "tags": ["PMO foundations", "Program & Portfolio Management", "Standardization"]},
-    {"slug": "boq-and-bidding-government-projects",
-     "title": "BOQ & Bidding Documents for Government Projects",
-     "short": "BOQ & bidding for public tenders",
-     "org": "Khazaz Engineering Office", "years": "2017 – 2020", "role": "Assistant Project Manager",
-     "fig": "Public", "fig_label": "infrastructure tenders",
-     "summary": "Prepared comprehensive bills of quantities and bidding packages for public infrastructure tenders.",
-     "outcomes": ["Improved bid alignment with project goals",
-                  "Increased contract win rates and budget accuracy"],
-     "tags": ["Cost estimation", "Saudi Building Code", "Bidding"]},
+     "card": "Standardized processes, documentation and bidding behind the firm's upgrade in classification.",
+     "mandate": "Standardize how the firm ran its projects, documentation and bids, and align them with its strategic plan.",
+     "complexity": "Public infrastructure tenders that demanded accurate bills of quantities, and a firm working toward a higher contractor classification.",
+     "how": ["Launched the internal Center of Excellence to standardize processes and documentation",
+             "Prepared BOQs and bidding packages for public infrastructure tenders",
+             "Led training, documentation and audit preparation"],
+     "result": ["Contributed to the firm's upgrade from 3rd to 1st-grade classification",
+                "Better bid alignment with project goals, with higher contract win rates and budget accuracy"],
+     "tags": ["PMO foundations", "Standardization", "Bidding & cost estimation", "Strategic alignment"]},
 ]
-FEATURED_WORK = ["violation-detection-nationwide-rollout", "infrastructure-rehabilitation-28m",
-                 "center-of-excellence-strategic-plan"]
 
 # ---------------------------------------------------------------------------
 # Credentials
@@ -236,35 +224,61 @@ CORE_CERTS = [
     {"abbr": "RMP", "name": "PMI Risk Management Professional", "issuer": "Project Management Institute", "year": "2022"},
     {"abbr": "P3O", "name": "Portfolio, Programme and Project Offices", "issuer": "PeopleCert", "year": "2023"},
 ]
-MORE_CERTS = [
+PERF_CERTS = [
     {"name": "Certified OKR Professional", "issuer": "The KPI Institute", "year": "2022", "icon": "target"},
     {"name": "Key Performance Indicators", "issuer": "The KPI Institute", "year": "2022", "icon": "report"},
-    {"name": "Power BI", "issuer": "Money Experts Institute for Training", "year": "2023", "icon": "chart"},
-    {"name": "Introduction to Data Analytics", "issuer": "Coursera", "year": "2023", "icon": "chart"},
-    {"name": "Internet of Things (IoT)", "issuer": "PwC", "year": "2023", "icon": "network"},
-    {"name": "Powerful Business Presentation", "issuer": "PwC's Academy", "year": "2023", "icon": "present"},
+]
+CONTINUING = [
+    ("Power BI", "Money Experts Institute for Training", "2023"),
+    ("Introduction to Data Analytics", "Coursera", "2023"),
+    ("Internet of Things (IoT)", "PwC", "2023"),
+    ("Business presentation course", "PwC's Academy", "2023"),
 ]
 HIPO = {
     "title": "High Potential (HiPo) Leadership Development Program",
     "host": "TAHAKOM",
     "selected": "Selected as one of 60 high-potential employees from 1,200 candidates for an eight-month program to develop future leaders.",
-    "graduated": "Graduated December 2025",
-    "modules": [
-        {"name": "Discovering and Implementing Your Leadership Strengths", "inst": "Massachusetts Institute of Technology", "when": "Jul 2025"},
-        {"name": "Customer Centric Solutions with Design Thinking & Innovation", "inst": "National University of Singapore", "when": "Sep 2025"},
-        {"name": "Smart Work Strategies for Collaboration", "inst": "ESCP Business School, London", "when": "Oct 2025"},
-        {"name": "AI Strategies for Business Transformation", "inst": "Northwestern University — Kellogg School of Management", "when": "Oct 2025"},
+    "steps": [
+        {"when": "May 2025", "name": "Selected: 60 of 1,200 candidates", "inst": "Eight-month program begins", "kind": "milestone"},
+        {"when": "Jul 2025", "name": "Discovering and Implementing Your Leadership Strengths", "inst": "Massachusetts Institute of Technology"},
+        {"when": "Sep 2025", "name": "Customer Centric Solutions with Design Thinking & Innovation", "inst": "National University of Singapore"},
+        {"when": "Oct 2025", "name": "Smart Work Strategies for Collaboration", "inst": "ESCP Business School, London"},
+        {"when": "Oct 2025", "name": "AI Strategies for Business Transformation", "inst": "Northwestern University, Kellogg School of Management"},
+        {"when": "2025", "name": "Driving Strategy Innovation", "inst": "HiPo program module"},
+        {"when": "Dec 2025", "name": "Graduated", "inst": "High Potential Development Program", "kind": "milestone"},
     ],
 }
+HIPO_MODULES = [s for s in HIPO["steps"] if s.get("kind") != "milestone"]
 INSTITUTIONS = ["MIT", "National University of Singapore", "ESCP Business School", "Kellogg School of Management"]
 EDUCATION = {"degree": "Bachelor's degree, Civil Engineering",
              "school": "Imam Mohammad Ibn Saud Islamic University (IMSIU)", "years": "2014 – 2019"}
-RECOGNITION = "Honoured for the accomplishment of 2023 targets — TAHAKOM"
+RECOGNITION = ("Honoured for the accomplishment of 2023 targets", "TAHAKOM")
+
+# ---------------------------------------------------------------------------
+# Executive bio — DRAFT, third person, for organizers, boards and media
+# ---------------------------------------------------------------------------
+BIO_SHORT = ("Ayman Alawwad is a PMO and portfolio leader based in Riyadh, with more than ten years of experience "
+             "bridging strategy and execution across technology, infrastructure and government environments. He has "
+             "managed and delivered projects and portfolios exceeding SAR 500 million, and has earned the PMP®, "
+             "PMI-RMP® and P3O® certifications.")
+BIO_LONG = ("Ayman Alawwad is a PMO and portfolio management leader with more than ten years of experience across "
+            "portfolio governance, strategic initiatives, technology, infrastructure, construction and government "
+            "environments in Saudi Arabia. He combines hands-on delivery with portfolio-level governance to strengthen "
+            "accountability, improve executive visibility and support effective decision-making.\n\n"
+            "At TAHAKOM he led the end-to-end delivery of national-level smart traffic violation detection systems across "
+            "multiple Saudi cities, working with government and private-sector stakeholders, multi-vendor environments and "
+            "cross-functional teams of more than 17. Earlier, he delivered a SAR 28 million infrastructure project for the "
+            "Ministry of Education two weeks ahead of schedule, and launched a Center of Excellence that supported his firm's "
+            "upgrade from 3rd- to 1st-grade classification.\n\n"
+            "He has earned the PMP®, PMI-RMP® and P3O® certifications, and was selected among 60 of 1,200 candidates for an "
+            "eight-month High Potential leadership program with modules from MIT, the National University of Singapore, "
+            "ESCP Business School and Northwestern University's Kellogg School of Management. He holds a bachelor's degree "
+            "in civil engineering from Imam Mohammad Ibn Saud Islamic University.")
 
 FAQ = [
     ("What does Ayman Alawwad specialize in?",
-     "PMO establishment and governance, portfolio and program management, strategy execution, RAID management "
-     "and executive reporting — across technology, infrastructure, construction and government environments in Saudi Arabia."),
+     "PMO governance, portfolio and program management, strategy execution, RAID management and executive reporting, "
+     "across technology, infrastructure, construction and government environments in Saudi Arabia."),
     ("Which professional certifications has he earned?",
      "PMP® (Project Management Institute, 2021), PMI-RMP® (2022) and P3O® (PeopleCert, 2023), together with "
      "Certified OKR Professional and Key Performance Indicators certifications from The KPI Institute."),
@@ -272,7 +286,21 @@ FAQ = [
      "Agile, Waterfall and hybrid delivery, with a strong focus on governance, business value, risk, cost, "
      "schedule, stakeholder management and operational readiness."),
     ("What executive education has he completed?",
-     "An eight-month High Potential leadership program with modules from MIT, the National University of "
-     "Singapore, ESCP Business School and Northwestern University's Kellogg School of Management."),
+     "An eight-month High Potential leadership program, selected as one of 60 from 1,200 candidates, with modules "
+     "from MIT, the National University of Singapore, ESCP Business School and Northwestern University's Kellogg "
+     "School of Management."),
     ("Where is he based?", "Riyadh, Saudi Arabia."),
+]
+
+# ---------------------------------------------------------------------------
+# Points for Ayman to confirm before launch (not shown on the site)
+# ---------------------------------------------------------------------------
+REVIEW = [
+    "PMI-RMP (Jun 2022) and P3O (Apr 2023) show as expired on LinkedIn; PMP (2021) is not in the Licenses section. Site shows the year earned only.",
+    "40%: LinkedIn has 'system rejection and missing rates' (experience) and 'material rejection rates' (projects). Site uses the projects wording.",
+    "Guidelines and designs: '2+ / 7+' (experience) vs '2 / 7' (projects). Site uses 2 and 7.",
+    "TAHAKOM shown as 2022 – 2026 (from his Aug 2026 farewell post); LinkedIn still says Present.",
+    "HiPo: module months are taken from post dates; 'Driving Strategy Innovation' has no published date or institution.",
+    "DRAFT wording for his review: the four 'How I lead' principles and the executive bio.",
+    "Photo and email: GitHub preview shows the AA monogram; email hidden until he approves.",
 ]
