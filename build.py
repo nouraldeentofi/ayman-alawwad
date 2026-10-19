@@ -22,6 +22,8 @@ C = CONFIG
 WORK_BY = {w["slug"]: w for w in WORK}
 VERSION = "1"
 CUR = ' aria-current="page"'
+ROUTE_LINE = ("The most direct route to Ayman is email or LinkedIn." if C["EMAIL"]
+              else "The most direct route to Ayman is a message on LinkedIn.")
 
 # ---------------------------------------------------------------------------
 # Icons — one stroke set (24 grid, 1.6 stroke, round joins)
@@ -514,7 +516,7 @@ def cta_block(root):
     <div class="cta glass rv">
       <div class="cta-in">
         <h2 class="h2">Start a conversation.</h2>
-        <p>The most direct route to Ayman is email or LinkedIn.</p>
+        <p>{ROUTE_LINE}</p>
         <div class="cta-b">
           <a class="btn btn-ink btn-shine" href="{root}contact.html">Get in touch {icon("arrow-r")}</a>
           <a class="btn btn-ghost" href="{E(C['LINKEDIN'])}" target="_blank" rel="noopener">{icon("linkedin")} LinkedIn</a>
@@ -800,9 +802,9 @@ def contact():
   <p class="form-err" id="f-err" role="alert" aria-live="polite"></p>
   <button class="btn btn-ink btn-shine btn-full" type="submit">{icon("send")} Compose email</button>
 </form>"""
-    body = f"""{page_head("Contact", "Contact", "The most direct route to Ayman is email or LinkedIn.", 81)}
+    body = f"""{page_head("Contact", "Contact", ROUTE_LINE, 81)}
 <section class="sec">
-  <div class="wrap ct-grid">
+  <div class="wrap ct-grid{'' if form else ' ct-solo'}">
     <div class="routes">{''.join(routes)}</div>
     {form}
   </div>
