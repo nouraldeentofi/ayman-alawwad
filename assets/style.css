@@ -573,6 +573,7 @@ a.card:active { scale: .985; }
 /* ---------- contact ---------- */
 .ct-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: start; }
 .routes { display: grid; gap: 16px; }
+.ct-solo { grid-template-columns: minmax(0, 620px); }
 .route { flex-direction: row; align-items: center; gap: var(--s4); padding: 22px 24px; min-height: 92px; }
 .route .tile { margin: 0; }
 .rt-b { display: grid; gap: 2px; min-width: 0; flex: 1; }
