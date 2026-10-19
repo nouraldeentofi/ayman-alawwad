@@ -15,7 +15,7 @@ CONFIG = {
     "WHATSAPP": "",
     "LINKEDIN": "https://www.linkedin.com/in/ayman-alawwad-0b9724185/",
     "LOCATION": "Riyadh, Saudi Arabia",
-    "PHOTO": "assets/img/ayman.jpg",  # set "" to show the monogram instead
+    "PHOTO": "",                      # public preview shows the AA monogram; set "assets/img/ayman.jpg" to show the portrait
     "PHOTO_WEBP": "assets/img/ayman.webp",
     "BASE_URL": "https://nouraldeentofi.github.io/ayman-alawwad",  # change when a custom domain is added
     "MAKER": "https://nouraldeentofi.com",
