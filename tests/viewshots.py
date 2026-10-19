@@ -3,10 +3,10 @@ from playwright.async_api import async_playwright
 BASE="http://localhost:8765/"
 OUT="/home/claude/ayman-alawwad/tests/shots/"
 # (name, path, selector-to-scroll-to or None, offset)
-PHONE=[("p1","index.html",None,0),("p2","index.html",".figs",-70),("p3","index.html",".grid-3",-150),
-       ("p4","career.html",".tl",-90),("p5","credentials.html",".seals",-170),("p6","work/infrastructure-rehabilitation-28m.html",None,0),
-       ("p7","leadership.html",".cascade",-150),("p8","contact.html",".routes",-110)]
-DESK=[("d1","index.html",None,0),("d2","leadership.html",".cascade",-260),("d3","credentials.html",".hipo",-330),("d4","work/violation-detection-nationwide-rollout.html",None,0),("d5","index.html",".seals",-260),("d6","career.html",None,0)]
+PHONE=[("p1","index.html",None,0),("p2","index.html",".figs",-70),("p3","index.html",".pr-row",-150),
+       ("p4","journey.html",".chaps",-90),("p5","credentials.html",".hj",-120),("p6","impact/national-violation-detection-rollout.html",".story",-100),
+       ("p7","leadership.html",".bios",-160),("p8","index.html",".chstrip",-200)]
+DESK=[("d1","index.html",None,0),("d2","leadership.html",".pr-row",-260),("d3","credentials.html",".hipo",-330),("d4","impact/national-violation-detection-rollout.html",None,0),("d5","journey.html",".chaps",-140),("d6","index.html",".wgrid, .grid-2:not(.pr-row)",-300)]
 async def shoot(b, items, w, h, mob, theme, prefix, dpr):
     ctx=await b.new_context(viewport={"width":w,"height":h}, is_mobile=mob, has_touch=mob, device_scale_factor=dpr)
     await ctx.add_init_script(f"try{{localStorage.setItem('aa-theme','{theme}')}}catch(e){{}}")
@@ -19,8 +19,6 @@ async def shoot(b, items, w, h, mob, theme, prefix, dpr):
             await pg.evaluate(f"""(()=>{{const e=document.querySelector('{sel}');scrollTo({{top:e.getBoundingClientRect().top+scrollY+({off}),behavior:'instant'}})}})()""")
         else:
             await pg.evaluate("scrollTo({top:0,behavior:'instant'})")
-        if name=="p4":
-            await pg.evaluate("document.querySelector('.more-btn').click()")
         await pg.wait_for_timeout(3200)
         await pg.screenshot(path=f"{OUT}{prefix}-{name}-{theme}.png")
     await ctx.close()

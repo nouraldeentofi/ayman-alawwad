@@ -16,8 +16,8 @@ HERE = Path(__file__).parent
 AXE = (HERE / "axe.min.js").read_text()
 QUICK = "quick" in sys.argv
 
-PAGES = ["index.html", "leadership.html", "career.html", "work.html", "credentials.html", "contact.html"] + [
-    "work/" + p.name for p in sorted((HERE.parent / "docs/work").glob("*.html"))]
+PAGES = ["index.html", "leadership.html", "journey.html", "impact.html", "credentials.html", "contact.html"] + [
+    "impact/" + p.name for p in sorted((HERE.parent / "docs/impact").glob("*.html"))]
 SIZES = [("320", 320, 700, True), ("360", 360, 760, True), ("390", 390, 844, True), ("412", 412, 900, True),
          ("430", 430, 932, True), ("land", 844, 390, True), ("768", 768, 1024, True), ("1024", 1024, 768, False),
          ("1366", 1366, 800, False), ("1440", 1440, 900, False)]
@@ -60,8 +60,8 @@ BASIC = """() => {
   return out; }"""
 
 SIBLINGS = """() => {
-  const groups = ['.grid-3 .swipe-row', '.wgrid', '.seals', '.certs', '.mods', '.pn-in', '.fcs', '.two', '.figs-in', '.ctrack', '.routes'];
-  const foot = '.pl-p, .wc-meta, .seal-y, .mod-i, .cert-y';
+  const groups = ['.grid-3 .swipe-row', '.grid-2 .swipe-row', '.wgrid', '.seals', '.perf', '.qcards', '.pn-in', '.fcs', '.two', '.figs-in', '.chstrip', '.routes'];
+  const foot = '.pl-p, .pr-p, .wc-meta, .seal-y, .cert-y, .qc-c';
   const out = [];
   groups.forEach(sel => document.querySelectorAll(sel).forEach(g => {
     const kids = [...g.children].filter(k => getComputedStyle(k).display !== 'none');
@@ -157,7 +157,7 @@ async def interaction_pass(b):
     pg.on("pageerror", lambda e: errs.append(str(e)))
     await pg.goto(BASE + "index.html", wait_until="networkidle")
     # dock navigation
-    for label, expect in [("Leadership", "leadership.html"), ("Career", "career.html"), ("Work", "work.html"),
+    for label, expect in [("Leadership", "leadership.html"), ("Journey", "journey.html"), ("Impact", "impact.html"),
                           ("Credentials", "credentials.html"), ("Home", "index.html")]:
         async with pg.expect_navigation():
             await pg.locator(".dock-a", has_text=label).tap()
@@ -171,19 +171,25 @@ async def interaction_pass(b):
     # theme toggle persists
     await pg.locator("[data-theme-toggle]").first.tap()
     th = await pg.evaluate("document.documentElement.dataset.theme")
-    await pg.goto(BASE + "career.html", wait_until="networkidle")
+    await pg.goto(BASE + "journey.html", wait_until="networkidle")
     th2 = await pg.evaluate("document.documentElement.dataset.theme")
     if th != "dark" or th2 != "dark": fail(f"theme toggle/persist: {th} {th2}")
     await pg.locator("[data-theme-toggle]").first.tap()
     # details expand on career (phones)
-    btn = pg.locator(".more-btn").first
-    await btn.scroll_into_view_if_needed(); await pg.wait_for_timeout(1600)
-    y0 = await btn.evaluate("e => e.getBoundingClientRect().top + scrollY")
-    await btn.tap(); await pg.wait_for_timeout(700)
-    open_ = await pg.evaluate("document.querySelector('.more').classList.contains('is-open')")
-    y1 = await btn.evaluate("e => e.getBoundingClientRect().top + scrollY")
-    if not open_: fail("career: Show details did not open")
-    if abs(y1 - y0) > 0.5: fail(f"career: tapped button moved {y1 - y0}px")
+    # copy executive bio (leadership page)
+    await ctx.grant_permissions(["clipboard-read", "clipboard-write"], origin=BASE.rstrip("/"))
+    await pg.goto(BASE + "leadership.html", wait_until="networkidle")
+    cb = pg.locator(".copy-btn").first
+    await cb.scroll_into_view_if_needed(); await pg.wait_for_timeout(1400)
+    y0 = await cb.evaluate("e => e.getBoundingClientRect().top + scrollY")
+    w0 = await cb.evaluate("e => e.getBoundingClientRect().width")
+    await cb.tap(); await pg.wait_for_timeout(300)
+    done = await cb.evaluate("e => e.classList.contains('is-done')")
+    clip = await pg.evaluate("navigator.clipboard.readText().catch(() => '')")
+    w1 = await cb.evaluate("e => e.getBoundingClientRect().width")
+    y1 = await cb.evaluate("e => e.getBoundingClientRect().top + scrollY")
+    if not done or not clip.startswith("Ayman Alawwad is"): fail(f"copy bio: done={done} clip={clip[:30]!r}")
+    if abs(w1 - w0) > 0.5 or abs(y1 - y0) > 0.5: fail(f"copy bio: button moved/resized {w0}->{w1} {y0}->{y1}")
     # swipe rows on home
     await pg.goto(BASE + "index.html", wait_until="networkidle")
     await pg.evaluate(SCROLL_ALL)
@@ -259,7 +265,7 @@ async def shift_pass(b):
     for name, w, h, mob in [("390", 390, 844, True), ("1440", 1440, 900, False), ("768", 768, 1024, True)]:
         ctx = await b.new_context(viewport={"width": w, "height": h}, is_mobile=mob, has_touch=mob)
         pg = await ctx.new_page()
-        for path in ["index.html", "leadership.html", "credentials.html", "career.html", "contact.html", PAGES[6]]:
+        for path in ["index.html", "leadership.html", "credentials.html", "journey.html", "contact.html", PAGES[6]]:
             await pg.goto(BASE + path, wait_until="networkidle")
             await pg.evaluate("document.fonts.ready")
             await pg.evaluate(SCROLL_ALL)
@@ -307,7 +313,7 @@ async def perf_pass(b):
     ctx = await b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
     pg = await ctx.new_page()
     cdp = await ctx.new_cdp_session(pg)
-    for path in ["index.html", "credentials.html", "career.html"]:
+    for path in ["index.html", "leadership.html", "journey.html"]:
         await pg.goto(BASE + path, wait_until="networkidle")
         await cdp.send("Emulation.setCPUThrottlingRate", {"rate": 4})
         r = await pg.evaluate("""async () => { const frames = []; let last = performance.now(); let run = true;
