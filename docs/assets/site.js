@@ -222,6 +222,29 @@
     });
   }
 
+  /* ---------- copy executive bio ---------- */
+  d.querySelectorAll('[data-copy]').forEach((b) => {
+    const src = d.getElementById(b.dataset.copy);
+    if (!src) return;
+    let t = 0;
+    b.addEventListener('click', async () => {
+      const text = src.innerText.trim();
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; }
+      catch (e) {
+        try {
+          const r = d.createRange(); r.selectNodeContents(src);
+          const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+          ok = d.execCommand && d.execCommand('copy');
+        } catch (e2) { ok = false; }
+      }
+      b.classList.toggle('is-done', !!ok);
+      b.setAttribute('aria-label', ok ? 'Copied' : 'Text selected, press copy');
+      clearTimeout(t);
+      t = setTimeout(() => { b.classList.remove('is-done'); b.removeAttribute('aria-label'); }, 2400);
+    });
+  });
+
   /* touch devices: make sure nothing keeps a hover look after a tap */
   if (touch) root.classList.add('touch');
 })();
