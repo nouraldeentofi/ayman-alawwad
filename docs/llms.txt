@@ -1,0 +1,22 @@
+# Ayman Alawwad
+
+> PMO Manager · Portfolio & Program Management. Bridging strategy and execution through portfolio governance. Ten-plus years leading projects, programs and portfolios across technology, infrastructure, construction and government environments in Saudi Arabia.
+
+Also written: Ayman Al-Awwad, Ayman AlAwwad, Ayman Alawad, أيمن العواد.
+
+## Pages
+- [Home](https://nouraldeentofi.github.io/ayman-alawwad/index.html): overview, signature figures, capabilities, career, selected work, credentials
+- [Leadership](https://nouraldeentofi.github.io/ayman-alawwad/leadership.html): approach, governance architecture, six capability areas
+- [Career](https://nouraldeentofi.github.io/ayman-alawwad/career.html): roles at TAHAKOM, Tatweer Buildings Company, Khazaz Engineering Office, Royal Commission for Riyadh City
+- [Work](https://nouraldeentofi.github.io/ayman-alawwad/work.html): selected programs and projects
+  - [Violation Detection System — Nationwide Rollout](https://nouraldeentofi.github.io/ayman-alawwad/work/violation-detection-nationwide-rollout.html)
+  - [Giga Project Management for Multi-Sector Deployments](https://nouraldeentofi.github.io/ayman-alawwad/work/giga-multi-sector-deployments.html)
+  - [Supplier Evaluation and Standardization Program](https://nouraldeentofi.github.io/ayman-alawwad/work/supplier-evaluation-standardization.html)
+  - [Guideline & Design Creation for Technology Projects](https://nouraldeentofi.github.io/ayman-alawwad/work/guidelines-and-designs-technology-projects.html)
+  - [Infrastructure Rehabilitation Project — SAR 28M](https://nouraldeentofi.github.io/ayman-alawwad/work/infrastructure-rehabilitation-28m.html)
+  - [Center of Excellence & Strategic Plan](https://nouraldeentofi.github.io/ayman-alawwad/work/center-of-excellence-strategic-plan.html)
+  - [BOQ & Bidding Documents for Government Projects](https://nouraldeentofi.github.io/ayman-alawwad/work/boq-and-bidding-government-projects.html)
+- [Credentials](https://nouraldeentofi.github.io/ayman-alawwad/credentials.html): PMP, PMI-RMP, P3O, executive education
+- [Contact](https://nouraldeentofi.github.io/ayman-alawwad/contact.html)
+
+- [Full text](https://nouraldeentofi.github.io/ayman-alawwad/llms-full.txt)
